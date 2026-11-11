@@ -649,7 +649,174 @@ body.rpg-app-body {
 .footer-icon-btn:hover {
     transform: scale(1.25);
 }
+/* ========================================================================== */
+/* SISTEMA RESPONSIVO UNIVERSAL (Celulares, Tablets y Computadoras)           */
+/* ========================================================================== */
 
+/* 1. CONFIGURACIÓN BASE (Escritorio / Pantallas Grandes) */
+body.rpg-app-body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #23141f;
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+}
+
+.rpg-main-screen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: calc(100vh - 140px);
+    padding: 20px 40px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* 2. TABLETS Y PANTALLAS MEDIANAS (Ancho menor a 1024px) */
+@media screen and (max-width: 1024px) {
+    .rpg-main-screen {
+        flex-direction: column;
+        justify-content: center;
+        gap: 25px;
+        padding: 20px;
+    }
+
+    .rpg-floating-nodes {
+        position: relative !important;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+        top: auto !important;
+        left: auto !important;
+    }
+
+    .rpg-center-showcase {
+        width: 100% !important;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .rpg-right-widgets {
+        position: relative !important;
+        right: auto !important;
+        width: 100% !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .rpg-social-widget {
+        position: relative !important;
+        right: auto !important;
+        width: 100% !important;
+        max-width: 380px;
+        transform: none !important;
+    }
+}
+
+/* 3. CELULARES Y PANTALLAS PEQUEÑAS (Ancho menor a 768px) */
+@media screen and (max-width: 768px) {
+    body.rpg-app-body {
+        overflow-y: auto !important;
+        height: auto !important;
+        padding-bottom: 90px; /* Espacio para la barra de navegación inferior */
+    }
+
+    .rpg-top-hud {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        height: auto;
+    }
+
+    .rpg-player-info {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .rpg-top-tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .rpg-main-screen {
+        display: flex;
+        flex-direction: column !important;
+        align-items: center;
+        height: auto !important;
+        padding: 15px 10px !important;
+        gap: 20px;
+    }
+
+    /* Menú flotante superior en móviles */
+    .rpg-floating-nodes {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* Títulos principales escalados para móviles */
+    .rpg-center-showcase {
+        width: 100% !important;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    .rpg-main-title {
+        font-size: 1.4rem !important;
+        line-height: 1.2;
+    }
+
+    .rpg-main-subtitle {
+        font-size: 0.85rem !important;
+    }
+
+    /* Contenedor de widgets y redes sociales adaptado al 100% del ancho del celular */
+    .rpg-right-widgets {
+        width: 100% !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .widget-card {
+        width: 100% !important;
+        max-width: 340px;
+        box-sizing: border-box;
+    }
+
+    .rpg-social-widget {
+        width: 100% !important;
+        max-width: 340px;
+        box-sizing: border-box;
+    }
+
+    /* Barra de navegación inferior fija y limpia en móviles */
+    .rpg-bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #23141f;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 8px 0;
+        box-sizing: border-box;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.6);
+    }
+}
 .rpg-modal-header h2 { font-family: var(--font-title); font-size: 1rem; color: var(--accent-gold); }
 .close-win-btn { background: transparent; border: none; font-size: 1rem; color: var(--text-muted); cursor: pointer; }
 
