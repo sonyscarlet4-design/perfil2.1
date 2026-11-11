@@ -29,15 +29,15 @@ body.light-mode {
 }
 
 /* =========================================
-   REGLAS STRICT NO-SCROLL PARA PWA MULTIDISPOSITIVO
+   REGLAS PWA MULTIDISPOSITIVO
    ========================================= */
 html, body {
     width: 100vw;
     height: 100vh;
-    height: 100dvh; /* dynamic viewport height para iOS y Android moderno */
+    height: 100dvh;
     margin: 0;
     padding: 0;
-    overflow: hidden !important; /* Inhabilita scroll general */
+    overflow-x: hidden;
     touch-action: manipulation;
     user-select: none;
 }
@@ -59,6 +59,12 @@ body.rpg-app-body {
     border-radius: var(--border-radius);
     box-shadow: 0 0 0 2px rgba(0,0,0,0.3), var(--shadow-soft);
     backdrop-filter: blur(10px);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* HUD SUPERIOR */
@@ -293,16 +299,20 @@ body.rpg-app-body {
 
 .mini-tool-btn { background: transparent; border: none; cursor: pointer; font-size: 1rem; }
 
-/* BARRA INFERIOR */
+/* =========================================
+   BARRA INFERIOR Y BOTÓN CONTACTO (RESPONSIVO TOTAL)
+   ========================================= */
 .rpg-bottom-nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: rgba(30, 17, 26, 0.95);
+    background: rgba(30, 17, 26, 0.98);
     border-top: 2px solid var(--accent-border);
-    padding: 4px 8px;
+    padding: 6px 4px;
     z-index: 10;
     flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .bottom-nav-item {
@@ -314,41 +324,46 @@ body.rpg-app-body {
     cursor: pointer;
     color: var(--text-muted);
     flex: 1;
+    padding: 2px;
 }
 
 .bottom-nav-item.active { color: var(--accent-gold); }
-.nav-icon { font-size: 1rem; }
-.nav-text { font-family: var(--font-title); font-size: 0.6rem; }
+.nav-icon { font-size: 0.95rem; }
+.nav-text { font-family: var(--font-title); font-size: 0.55rem; }
 
 .bottom-nav-center-btn {
     background: linear-gradient(135deg, var(--accent-rose), #7b3e5a);
     border: 2px solid var(--accent-gold);
-    width: 44px;
-    height: 44px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    position: relative;
-    top: -8px;
+    flex: 0.8;
 }
 
+/* BOTÓN DE CONTACTO SIEMPRE VISIBLE EN CUALQUIER DISPOSITIVO */
 .rpg-massive-cta {
     background: linear-gradient(135deg, var(--accent-gold), #b38f27);
     color: #1e111a;
     border: 1px solid #fff;
-    padding: 6px 12px;
-    border-radius: 16px;
+    padding: 6px 8px;
+    border-radius: 12px;
     font-family: var(--font-title);
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     font-weight: 700;
     cursor: pointer;
-    display: none;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    flex: 1.2;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
-
-@media(min-width: 600px) { .rpg-massive-cta { display: flex; } }
 
 /* MODALES */
 .rpg-modal {
@@ -376,7 +391,7 @@ body.rpg-app-body {
     width: 100%;
     max-width: 440px;
     max-height: 80dvh;
-    overflow-y: auto; /* Scroll permitido únicamente dentro del modal */
+    overflow-y: auto;
     padding: 16px;
 }
 
@@ -388,9 +403,11 @@ body.rpg-app-body {
     padding-bottom: 8px;
     margin-bottom: 12px;
 }
-/* =========================================
-   ESTILOS MODAL DE VIDEOJUEGOS
-   ========================================= */
+
+.rpg-modal-header h2 { font-family: var(--font-title); font-size: 1rem; color: var(--accent-gold); }
+.close-win-btn { background: transparent; border: none; font-size: 1rem; color: var(--text-muted); cursor: pointer; }
+
+/* ESTILOS MODAL DE VIDEOJUEGOS */
 .games-container {
     display: flex;
     flex-direction: column;
@@ -409,11 +426,6 @@ body.rpg-app-body {
     border-radius: 10px;
     padding: 8px;
     transition: transform 0.2s ease;
-}
-
-.game-card:hover {
-    border-color: var(--accent-gold, #f3c66f);
-    transform: translateX(2px);
 }
 
 .game-card img {
@@ -454,14 +466,9 @@ body.rpg-app-body {
     border-radius: 4px;
     font-size: 0.68rem;
     text-decoration: none;
-    transition: background 0.2s;
 }
 
-.game-link-btn:hover {
-    background: var(--accent-rose, #e092b3);
-    color: #1e111a;
-}
-
+/* WIDGET SOCIAL LATERAL */
 .rpg-social-widget {
     position: absolute;
     right: 25px;
@@ -482,7 +489,6 @@ body.rpg-app-body {
     transform: translateY(-50%) translateX(calc(100% - 15px));
 }
 
-/* Botón pestaña para ocultar/mostrar */
 .widget-toggle-btn {
     position: absolute;
     left: -24px;
@@ -500,11 +506,6 @@ body.rpg-app-body {
     align-items: center;
     justify-content: center;
     font-size: 0.8rem;
-    transition: background 0.2s;
-}
-
-.widget-toggle-btn:hover {
-    background: var(--accent-border, #8b536e);
 }
 
 .social-widget-content {
@@ -513,7 +514,6 @@ body.rpg-app-body {
     gap: 10px;
 }
 
-/* Ítems / Filas del Widget */
 .social-item {
     display: flex;
     align-items: center;
@@ -524,16 +524,8 @@ body.rpg-app-body {
     padding: 8px 10px;
     text-decoration: none;
     color: inherit;
-    transition: all 0.25s ease;
 }
 
-.social-item:hover {
-    background: rgba(60, 32, 48, 0.9);
-    border-color: var(--accent-gold, #f3c66f);
-    transform: translateX(-2px);
-}
-
-/* Cajas de iconos con degradados */
 .social-icon-box {
     width: 42px;
     height: 42px;
@@ -545,52 +537,16 @@ body.rpg-app-body {
     flex-shrink: 0;
 }
 
-.instagram-bg {
-    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-    border: 1px solid #ff7a00;
-}
+.instagram-bg { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); border: 1px solid #ff7a00; }
+.github-bg { background: #24292e; border: 1px solid var(--accent-gold, #f3c66f); }
+.sheets-bg { background: #0f9d58; border: 1px solid #57d28d; }
 
-.github-bg {
-    background: #24292e;
-    border: 1px solid var(--accent-gold, #f3c66f);
-}
+.social-info { display: flex; flex-direction: column; flex: 1; }
+.social-name { font-family: var(--font-title, 'Cinzel', serif); font-size: 0.85rem; font-weight: 700; color: var(--text-light, #fff2ed); }
+.social-detail { font-size: 0.72rem; color: var(--accent-gold, #f3c66f); }
+.social-status.online { font-size: 0.68rem; color: #4cd964; font-weight: 600; }
+.social-subdetail { font-size: 0.68rem; color: var(--text-muted, #c4a4af); }
 
-.sheets-bg {
-    background: #0f9d58;
-    border: 1px solid #57d28d;
-}
-
-/* Información textual */
-.social-info {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.social-name {
-    font-family: var(--font-title, 'Cinzel', serif);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--text-light, #fff2ed);
-}
-
-.social-detail {
-    font-size: 0.72rem;
-    color: var(--accent-gold, #f3c66f);
-}
-
-.social-status.online {
-    font-size: 0.68rem;
-    color: #4cd964;
-    font-weight: 600;
-}
-
-.social-subdetail {
-    font-size: 0.68rem;
-    color: var(--text-muted, #c4a4af);
-}
-
-/* Botones de acción laterales (+ y ↗) */
 .social-action-btn {
     width: 32px;
     height: 32px;
@@ -602,29 +558,14 @@ body.rpg-app-body {
     justify-content: center;
     font-size: 0.9rem;
     font-weight: 700;
-    transition: all 0.2s;
     background: rgba(255, 255, 255, 0.05);
     color: var(--text-light, #fff2ed);
 }
 
-.add-btn {
-    background: #10b981;
-    border-color: #34d399;
-}
+.add-btn { background: #10b981; border-color: #34d399; }
+.external-btn { background: rgba(139, 83, 110, 0.4); border-color: var(--accent-border, #8b536e); }
+.social-icon-box i { color: #fff; font-size: 1.25rem; }
 
-.external-btn {
-    background: rgba(139, 83, 110, 0.4);
-    border-color: var(--accent-border, #8b536e);
-}
-
-.social-item:hover .social-action-btn {
-    transform: scale(1.08);
-}
-.social-icon-box i {
-    color: #fff;
-    font-size: 1.25rem;
-}
-/* Pie inferior de iconos del widget */
 .social-widget-footer {
     display: flex;
     justify-content: space-around;
@@ -634,7 +575,6 @@ body.rpg-app-body {
     border-radius: 10px;
     padding: 6px;
     margin-top: 4px;
-    
 }
 
 .footer-icon-btn {
@@ -643,184 +583,9 @@ body.rpg-app-body {
     color: var(--text-light, #fff2ed);
     font-size: 1.1rem;
     cursor: pointer;
-    transition: transform 0.2s;
 }
 
-.footer-icon-btn:hover {
-    transform: scale(1.25);
-}
-/* ========================================================================== */
-/* SISTEMA RESPONSIVO UNIVERSAL (Celulares, Tablets y Computadoras)           */
-/* ========================================================================== */
-
-/* 1. CONFIGURACIÓN BASE (Escritorio / Pantallas Grandes) */
-body.rpg-app-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    background-color: #23141f;
-    font-family: 'Cormorant Garamond', serif;
-    overflow-x: hidden;
-}
-
-.rpg-main-screen {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: calc(100vh - 140px);
-    padding: 20px 40px;
-    box-sizing: border-box;
-    position: relative;
-}
-
-/* 2. TABLETS Y PANTALLAS MEDIANAS (Ancho menor a 1024px) */
-@media screen and (max-width: 1024px) {
-    .rpg-main-screen {
-        flex-direction: column;
-        justify-content: center;
-        gap: 25px;
-        padding: 20px;
-    }
-
-    .rpg-floating-nodes {
-        position: relative !important;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 15px;
-        width: 100%;
-        top: auto !important;
-        left: auto !important;
-    }
-
-    .rpg-center-showcase {
-        width: 100% !important;
-        text-align: center;
-        margin: 10px 0;
-    }
-
-    .rpg-right-widgets {
-        position: relative !important;
-        right: auto !important;
-        width: 100% !important;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .rpg-social-widget {
-        position: relative !important;
-        right: auto !important;
-        width: 100% !important;
-        max-width: 380px;
-        transform: none !important;
-    }
-}
-
-/* 3. CELULARES Y PANTALLAS PEQUEÑAS (Ancho menor a 768px) */
-@media screen and (max-width: 768px) {
-    body.rpg-app-body {
-        overflow-y: auto !important;
-        height: auto !important;
-        padding-bottom: 90px; /* Espacio para la barra de navegación inferior */
-    }
-
-    .rpg-top-hud {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-        height: auto;
-    }
-
-    .rpg-player-info {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .rpg-top-tags {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 5px;
-    }
-
-    .rpg-main-screen {
-        display: flex;
-        flex-direction: column !important;
-        align-items: center;
-        height: auto !important;
-        padding: 15px 10px !important;
-        gap: 20px;
-    }
-
-    /* Menú flotante superior en móviles */
-    .rpg-floating-nodes {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-        width: 100%;
-    }
-
-    /* Títulos principales escalados para móviles */
-    .rpg-center-showcase {
-        width: 100% !important;
-        padding: 0 10px;
-        text-align: center;
-    }
-
-    .rpg-main-title {
-        font-size: 1.4rem !important;
-        line-height: 1.2;
-    }
-
-    .rpg-main-subtitle {
-        font-size: 0.85rem !important;
-    }
-
-    /* Contenedor de widgets y redes sociales adaptado al 100% del ancho del celular */
-    .rpg-right-widgets {
-        width: 100% !important;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .widget-card {
-        width: 100% !important;
-        max-width: 340px;
-        box-sizing: border-box;
-    }
-
-    .rpg-social-widget {
-        width: 100% !important;
-        max-width: 340px;
-        box-sizing: border-box;
-    }
-
-    /* Barra de navegación inferior fija y limpia en móviles */
-    .rpg-bottom-nav {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: #23141f;
-        z-index: 1000;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 8px 0;
-        box-sizing: border-box;
-        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.6);
-    }
-}
-.rpg-modal-header h2 { font-family: var(--font-title); font-size: 1rem; color: var(--accent-gold); }
-.close-win-btn { background: transparent; border: none; font-size: 1rem; color: var(--text-muted); cursor: pointer; }
-
-/* CARRUSEL Y TABLAS */
+/* CARRUSEL Y COMPONENTES EXTRAS */
 .carrusel { position: relative; width: 100%; height: 240px; border-radius: 8px; overflow: hidden; border: 1px solid var(--accent-border); }
 .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.3s ease; }
 .slide.active { opacity: 1; }
@@ -852,102 +617,61 @@ body.rpg-app-body {
 .form-group input, .form-group textarea { width: 100%; padding: 6px 8px; border: 1px solid var(--accent-border); border-radius: 4px; background: rgba(0,0,0,0.2); color: var(--text-dark); font-size: 0.85rem; }
 .btn-submit { width: 100%; background: var(--accent-gold); color: #1e111a; border: none; padding: 8px; border-radius: 4px; font-weight: 700; cursor: pointer; }
 #alertaBox { margin-top: 6px; text-align: center; font-size: 0.8rem; }
+
 /* ========================================================================== */
-/* CORRECCIÓN EXCLUSIVA PARA EL BOTÓN DE CONTACTO Y NAVEGACIÓN INFERIOR        */
+/* MEDIA QUERIES RESPONSIVAS PARA TABLETS Y CELULARES                         */
 /* ========================================================================== */
-
-/* Asegurar que la barra inferior en dispositivos móviles contenga todo sin desbordar */
-@media screen and (max-width: 768px) {
-    body.rpg-app-body {
-        padding-bottom: 110px !important; /* Da espacio abajo para que no tape el contenido */
-    }
-
-    .rpg-bottom-nav {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important; /* Permite deslizar si faltara espacio */
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 5px 8px !important;
-        gap: 5px;
-    }
-
-    /* Estilo responsivo para el botón masivo de CONTACTO */
-    .rpg-massive-cta {
-        background-color: #d4af37 !important; /* Resalta el botón */
-        color: #23141f !important;
-        font-weight: bold;
-        padding: 8px 12px !important;
-        font-size: 0.8rem !important;
-        border-radius: 6px;
-        white-space: nowrap;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-        flex-shrink: 0;
-    }
-}
-
-/* En tablets y computadoras */
-@media screen and (min-width: 769px) {
-    .rpg-massive-cta {
-        display: flex !important;
-        align-items: center;
-        gap: 6px;
-        padding: 10px 20px;
-    }
-}
-/* --- 1. AJUSTE UNIVERSAL PARA QUE NADA SE DESBORDE --- */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-body, .rpg-modal-content, .game-card {
-    box-sizing: border-box;
-}
-
-/* --- 2. TABLETS (Pantallas menores a 1024px) --- */
 @media screen and (max-width: 1024px) {
-    .rpg-social-widget {
-        right: 15px;
-        width: 260px;
+    .rpg-main-screen {
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        padding: 15px;
     }
-}
-
-/* --- 3. CELULARES (Pantallas menores a 768px) --- */
-@media screen and (max-width: 768px) {
-    /* Ventanas modales y contenedores al 95% de la pantalla */
-    .rpg-modal-content {
-        width: 95% !important;
-        padding: 15px !important;
-        margin: 10px auto;
+    .rpg-floating-nodes {
+        position: relative !important;
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
     }
-
-    /* Tarjetas de juegos en columna para móviles */
-    .game-card {
-        flex-direction: column !important;
-        align-items: center;
+    .rpg-center-showcase {
+        position: relative !important;
+        transform: none !important;
+        left: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
         text-align: center;
     }
-
-    .game-card img {
-        width: 100%;
-        max-height: 140px;
-        object-fit: cover;
+    .rpg-right-widgets {
+        position: relative !important;
+        right: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        align-items: center;
     }
-
-    /* Widget de redes sociales flotante adaptable */
     .rpg-social-widget {
         position: relative !important;
         right: auto !important;
         top: auto !important;
         transform: none !important;
-        width: 92% !important;
-        margin: 15px auto;
+        width: 100% !important;
+        max-width: 340px;
     }
+}
 
-    /* Botones más cómodos para el dedo táctil */
-    .game-link-btn, .bottom-nav-item {
-        padding: 10px 14px;
+@media screen and (max-width: 768px) {
+    .rpg-modal-content {
+        width: 95% !important;
+        padding: 15px !important;
+    }
+    .game-card {
+        flex-direction: column !important;
+        align-items: center;
+        text-align: center;
+    }
+    .game-card img {
+        width: 100%;
+        max-height: 120px;
     }
 }
