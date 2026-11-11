@@ -852,3 +852,46 @@ body.rpg-app-body {
 .form-group input, .form-group textarea { width: 100%; padding: 6px 8px; border: 1px solid var(--accent-border); border-radius: 4px; background: rgba(0,0,0,0.2); color: var(--text-dark); font-size: 0.85rem; }
 .btn-submit { width: 100%; background: var(--accent-gold); color: #1e111a; border: none; padding: 8px; border-radius: 4px; font-weight: 700; cursor: pointer; }
 #alertaBox { margin-top: 6px; text-align: center; font-size: 0.8rem; }
+/* ========================================================================== */
+/* CORRECCIÓN EXCLUSIVA PARA EL BOTÓN DE CONTACTO Y NAVEGACIÓN INFERIOR        */
+/* ========================================================================== */
+
+/* Asegurar que la barra inferior en dispositivos móviles contenga todo sin desbordar */
+@media screen and (max-width: 768px) {
+    body.rpg-app-body {
+        padding-bottom: 110px !important; /* Da espacio abajo para que no tape el contenido */
+    }
+
+    .rpg-bottom-nav {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important; /* Permite deslizar si faltara espacio */
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 5px 8px !important;
+        gap: 5px;
+    }
+
+    /* Estilo responsivo para el botón masivo de CONTACTO */
+    .rpg-massive-cta {
+        background-color: #d4af37 !important; /* Resalta el botón */
+        color: #23141f !important;
+        font-weight: bold;
+        padding: 8px 12px !important;
+        font-size: 0.8rem !important;
+        border-radius: 6px;
+        white-space: nowrap;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        flex-shrink: 0;
+    }
+}
+
+/* En tablets y computadoras */
+@media screen and (min-width: 769px) {
+    .rpg-massive-cta {
+        display: flex !important;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 20px;
+    }
+}
