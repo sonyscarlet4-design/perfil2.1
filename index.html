@@ -10,15 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
     
-    <!-- Vinculación del PWA Manifest -->
+    <!-- Enlace PWA Manifest -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#23141f">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- Vinculación del CSS -->
-    <link rel="stylesheet" href="styles.css?v=2">
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="rpg-app-body">
 
@@ -50,7 +49,7 @@
         </div>
     </header>
 
-    <!-- PANTALLA PRINCIPAL -->
+    <!-- PANTALLA PRINCIPAL (ADAPTADA A MÓVIL Y ESCRITORIO) -->
     <main class="rpg-main-screen">
         
         <!-- Botones de Acceso Rápido Laterales / Izquierda -->
@@ -155,6 +154,10 @@
             <span class="nav-icon">👤</span>
             <span class="nav-text">Perfil</span>
         </button>
+        <button class="bottom-nav-item" data-modal="horario-win" type="button">
+            <span class="nav-icon">📅</span>
+            <span class="nav-text">Horario</span>
+        </button>
         <button class="bottom-nav-item" data-modal="favoritos-win" type="button">
             <span class="nav-icon">🎧</span>
             <span class="nav-text">Música</span>
@@ -164,7 +167,6 @@
             <span class="nav-text">Juegos</span>
         </button>
         
-        <!-- BOTÓN DE CONTACTO LIMPIO SIN CLASE NAV-TEXT -->
         <button class="rpg-massive-cta" data-modal="contacto-win" type="button">
             <span>🚀</span> CONTACTO
         </button>
@@ -254,29 +256,93 @@
             </div>
         </div>
     </div>
-
-    <div id="favoritos-win" class="rpg-modal">
+<div id="favoritos-win" class="rpg-modal">
         <div class="rpg-modal-content frame-box">
             <div class="rpg-modal-header">
-                <h2>🎧 Música</h2>
+                <h2>🎧 Música & Favoritos</h2>
                 <button class="close-win-btn" type="button">✖</button>
             </div>
             <div class="accordion-container">
+                
+                <!-- Categoría Rock & Indie -->
                 <div class="accordion-item frame-box">
-                    <button class="accordion-header" type="button"><span>🎸 Rock & Indie (Bad Omens, Zoé)</span><span class="icon">▼</span></button>
+                    <button class="accordion-header" type="button"><span>🎸 Rock & Indie</span><span class="icon">▼</span></button>
                     <div class="accordion-content">
-                        <div class="sub-item"><h4>Bad Omens</h4><p><em>Just Pretend</em></p></div>
-                        <div class="sub-item"><h4>Zoé & Siddhartha</h4><p><em>Azul / Tarde</em></p></div>
+                        
+                        <!-- Bad Omens -->
+                        <div class="music-card-item">
+                            <img src="bad-omens.jpg" alt="Bad Omens" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=100&auto=format&fit=crop&q=60'">
+                            <div class="music-info">
+                                <h4>Bad Omens</h4>
+                                <p><em>Just Pretend</em></p>
+                                <a href="https://www.youtube.com/watch?v=oxqYivY3VJM" target="_blank" class="song-link">Escuchar original ↗</a>
+                            </div>
+                        </div>
+
+                        <!-- Zoé -->
+                        <div class="music-card-item">
+                            <img src="zoe.jpg" alt="Zoé" onerror="this.src='https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=100&auto=format&fit=crop&q=60'">
+                            <div class="music-info">
+                                <h4>Zoé</h4>
+                                <p><em>Azul</em></p>
+                                <a href="https://www.youtube.com/watch?v=84v5Qv7-1k4" target="_blank" class="song-link">Escuchar original ↗</a>
+                            </div>
+                        </div>
+
+                        <!-- Siddhartha -->
+                        <div class="music-card-item">
+                            <img src="siddhartha.jpg" alt="Siddhartha" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=100&auto=format&fit=crop&q=60'">
+                            <div class="music-info">
+                                <h4>Siddhartha</h4>
+                                <p><em>Tarde</em></p>
+                                <a href="https://www.youtube.com/watch?v=0b9L88h5pY8" target="_blank" class="song-link">Escuchar original ↗</a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
+                <!-- Categoría K-Pop & Romántica -->
                 <div class="accordion-item frame-box">
                     <button class="accordion-header" type="button"><span>⭐ K-Pop & Romántica</span><span class="icon">▼</span></button>
                     <div class="accordion-content">
-                        <div class="sub-item"><h4>BTS & GOT7</h4><p><em>Love is Not Over / If You Do</em></p></div>
-                        <div class="sub-item"><h4>José José</h4><p><em>Baladas inolvidables</em></p></div>
+                        
+                        <!-- BTS -->
+                        <div class="music-card-item">
+                            <img src="bts.jpg" alt="BTS" onerror="this.src='https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=100&auto=format&fit=crop&q=60'">
+                            <div class="music-info">
+                                <h4>BTS</h4>
+                                <p><em>Love is Not Over</em></p>
+                                <a href="https://www.youtube.com/watch?v=wXU-g9lWw_U" target="_blank" class="song-link">Escuchar original ↗</a>
+                            </div>
+                        </div>
+
+                        <!-- GOT7 -->
+                        <div class="music-card-item">
+                            <img src="got7.jpg" alt="GOT7" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=100&auto=format&fit=crop&q=60'">
+                            <div class="music-info">
+                                <h4>GOT7</h4>
+                                <p><em>If You Do</em></p>
+                                <a href="https://www.youtube.com/watch?v=T0iPB_FeHpU" target="_blank" class="song-link">Escuchar original ↗</a>
+                            </div>
+                        </div>
+
+                        <!-- José José -->
+                        <div class="music-card-item">
+                            <img src="josejose.jpg" alt="José José" onerror="this.src='https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=100&auto=format&fit=crop&q=60'">
+                            <div class="music-info">
+                                <h4>José José</h4>
+                                <p><em>El Triste</em></p>
+                                <a href="https://www.youtube.com/watch?v=7bBfW_27lCc" target="_blank" class="song-link">Escuchar original ↗</a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
             </div>
+        </div>
+    </div>
         </div>
     </div>
 
@@ -295,22 +361,7 @@
             <div id="alertaBox"></div>
         </div>
     </div>
-<script>
-        const anchoPantalla = window.innerWidth;
-        const ua = navigator.userAgent;
 
-        if (/Android|iPhone|iPod/i.test(ua)) {
-            console.log("Dispositivo detectado: Smartphone / Móvil (Modo PWA Táctil)");
-        } else if (/iPad|Tablet/i.test(ua) || (anchoPantalla >= 768 && anchoPantalla <= 1024)) {
-            console.log("Dispositivo detectado: Tablet (Modo PWA Adaptativo)");
-        } else if (anchoPantalla > 1024 && anchoPantalla <= 1440) {
-            console.log("Dispositivo detectado: Laptop o Escritorio Estándar (Modo Simulación PWA)");
-        } else if (anchoPantalla > 1440) {
-            console.log("Dispositivo detectado: Monitor Grande / Escritorio Ultrawide (Modo Escritorio)");
-        } else {
-            console.log("Dispositivo detectado: Dispositivo Genérico / Desconocido");
-        }
-    </script>
     <script src="script.js" defer></script>
 </body>
 </html>
