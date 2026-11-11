@@ -655,7 +655,7 @@ img {
     .node-icon { font-size: 0.75rem !important; }
     .node-label { font-size: 0.45rem !important; }
 
-    /* 4. Caja central de presentación abajo centrada */
+    /* 4. Caja central de presentación abajo centrada (limpia y sin duplicados) */
     .rpg-center-showcase {
         position: absolute !important;
         bottom: 65px !important;
@@ -672,25 +672,24 @@ img {
         padding: 6px 8px !important;
     }
 
-    .rpg-main-title { font-size: 0.8rem !important; }
-    .rpg-main-subtitle { font-size: 0.62rem !important; }
+    .rpg-main-title { font-size: 0.8rem !important; margin-bottom: 2px !important; }
+    .rpg-main-subtitle { font-size: 0.62rem !important; margin: 0 !important; }
 
-    /* 5. Widget derecho (Redes Sociales) y su pequeña flecha perfectamente acoplados */
+    /* 5. Widget derecho (Redes Sociales) flotando a la derecha con tamaño adaptado y sin desbordes */
     .rpg-right-widgets {
         display: none !important;
     }
 
     .rpg-social-widget {
-        position: relative !important;
-        right: auto !important;
-        top: auto !important;
+        position: absolute !important;
+        right: 4px !important;
+        top: 15px !important;
         transform: none !important;
         width: 52% !important;
         max-width: 185px !important;
         box-sizing: border-box !important;
         z-index: 20 !important;
         padding: 6px !important;
-        flex-shrink: 0;
     }
 
     .widget-toggle-btn {

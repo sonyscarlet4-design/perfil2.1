@@ -213,11 +213,6 @@ if (profileBtn) {
         // Cierra cualquier modal activa
         document.querySelectorAll('.rpg-modal').forEach(modal => modal.classList.remove('active'));
         
-        // Restablece el widget social lateral a su estado visible por defecto
-        const socialWidget = document.querySelector('.rpg-social-widget');
-        if (socialWidget) {
-            socialWidget.classList.remove('collapsed');
-            socialWidget.style.display = 'block';
-        }
+        
     });
 }
