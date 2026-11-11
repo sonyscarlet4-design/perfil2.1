@@ -206,3 +206,18 @@ function detectarDispositivo() {
 
 window.addEventListener('load', detectarDispositivo);
 window.addEventListener('resize', detectarDispositivo);
+// Asegurar que al presionar el botón de Perfil (casita) se restablezca la pantalla principal limpia
+const profileBtn = document.querySelector('.bottom-nav-item[data-target="perfil"]') || document.querySelector('.fa-user')?.closest('button');
+if (profileBtn) {
+    profileBtn.addEventListener('click', () => {
+        // Cierra cualquier modal activa
+        document.querySelectorAll('.rpg-modal').forEach(modal => modal.classList.remove('active'));
+        
+        // Restablece el widget social lateral a su estado visible por defecto
+        const socialWidget = document.querySelector('.rpg-social-widget');
+        if (socialWidget) {
+            socialWidget.classList.remove('collapsed');
+            socialWidget.style.display = 'block';
+        }
+    });
+}
