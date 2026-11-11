@@ -15,7 +15,8 @@
     <meta name="theme-color" content="#23141f">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
+<!-- Script de detección avanzada para todo tipo de dispositivos -->
+    
     <!-- Vinculación del CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -298,7 +299,22 @@
             <div id="alertaBox"></div>
         </div>
     </div>
+<script>
+        const anchoPantalla = window.innerWidth;
+        const ua = navigator.userAgent;
 
+        if (/Android|iPhone|iPod/i.test(ua)) {
+            console.log("Dispositivo detectado: Smartphone / Móvil (Modo PWA Táctil)");
+        } else if (/iPad|Tablet/i.test(ua) || (anchoPantalla >= 768 && anchoPantalla <= 1024)) {
+            console.log("Dispositivo detectado: Tablet (Modo PWA Adaptativo)");
+        } else if (anchoPantalla > 1024 && anchoPantalla <= 1440) {
+            console.log("Dispositivo detectado: Laptop o Escritorio Estándar (Modo Simulación PWA)");
+        } else if (anchoPantalla > 1440) {
+            console.log("Dispositivo detectado: Monitor Grande / Escritorio Ultrawide (Modo Escritorio)");
+        } else {
+            console.log("Dispositivo detectado: Dispositivo Genérico / Desconocido");
+        }
+    </script>
     <script src="script.js" defer></script>
 </body>
 </html>

@@ -1,7 +1,4 @@
-/**
- * ARQUITECTURA PREVENCIÓN DE FUGAS DE MEMORIA (MEMORY LEAK PROTECTION)
- * & CONTROL DE HIDRATACIÓN / REFRESH PWA
- */
+
 
 (function () {
     'use strict';
@@ -13,7 +10,6 @@
 
     // 1. REFRESH Y BOTÓN DE HIDRATACIÓN
     function hydrateApp() {
-        // Realiza una recarga limpia omitiendo la caché del navegador si es posible
         if (window.location) {
             window.location.reload(true);
         }
@@ -63,7 +59,6 @@
         const content = item.querySelector('.accordion-content');
         const isOpen = item.classList.contains('open');
 
-        // Cerrar acordeones hermanos en la misma ventana
         const parentContainer = item.closest('.accordion-container');
         if (parentContainer) {
             parentContainer.querySelectorAll('.accordion-item').forEach(sibling => {
@@ -84,15 +79,13 @@
         }
     }
 
-    // 5. DELEGACIÓN DE EVENTOS GLOBAL (Evita acumulación de Event Listeners)
+    // 5. DELEGACIÓN DE EVENTOS GLOBAL
     document.addEventListener('click', function (e) {
-        // A. Botón de Hidratación / Refresh
         if (e.target.closest('#hydrateBtn')) {
             hydrateApp();
             return;
         }
 
-        // B. Tema Noche/Día
         if (e.target.closest('#themeBtn')) {
             document.body.classList.toggle('light-mode');
             const btn = document.getElementById('themeBtn');
@@ -100,7 +93,6 @@
             return;
         }
 
-        // C. Abrir Modales vía data-modal o Avatar
         const modalTrigger = e.target.closest('[data-modal]');
         if (modalTrigger) {
             const modalId = modalTrigger.getAttribute('data-modal');
@@ -113,13 +105,11 @@
             return;
         }
 
-        // D. Cerrar Modal activo (Botón X o Click fuera)
         if (e.target.closest('.close-win-btn') || e.target.classList.contains('rpg-modal')) {
             closeActiveModal();
             return;
         }
 
-        // E. Controles del Carrusel
         if (e.target.closest('#nextBtn')) {
             changeSlide('next');
             return;
@@ -129,7 +119,6 @@
             return;
         }
 
-        // F. Acordeón
         const accordionHeader = e.target.closest('.accordion-header');
         if (accordionHeader) {
             toggleAccordion(accordionHeader);
@@ -162,7 +151,6 @@
     window.addEventListener('DOMContentLoaded', function () {
         initCarrusel();
 
-        // Previene rebote de viewport en iOS Safari (Overscroll / Bounce leak)
         document.body.addEventListener('touchmove', function (e) {
             if (!e.target.closest('.rpg-modal-content')) {
                 e.preventDefault();
@@ -171,7 +159,8 @@
     });
 
 })();
-// Lógica para desplegar / ocultar el widget lateral
+
+// --- WIDGET LATERAL ---
 const toggleWidgetBtn = document.getElementById('toggleWidgetBtn');
 const socialWidget = document.querySelector('.rpg-social-widget');
 
@@ -180,7 +169,9 @@ if (toggleWidgetBtn && socialWidget) {
         socialWidget.classList.toggle('collapsed');
         toggleWidgetBtn.textContent = socialWidget.classList.contains('collapsed') ? '❯' : '❮';
     });
-    
+}
+
+// --- REGISTRO DE SERVICE WORKER ---
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
@@ -188,8 +179,8 @@ if ('serviceWorker' in navigator) {
             .catch(err => console.error('Error al registrar el Service Worker:', err));
     });
 }
-}
-// --- SCRIPT DE DETECCIÓN DE DISPOSITIVOS ---
+
+// --- SCRIPT DE DETECCIÓN AVANZADA DE DISPOSITIVOS ---
 function detectarDispositivo() {
     const ancho = window.innerWidth;
     const userAgent = navigator.userAgent.toLowerCase();
@@ -198,12 +189,18 @@ function detectarDispositivo() {
     const esTablet = (/ipad|tablet/i.test(userAgent) || (ancho > 768 && ancho <= 1024));
     const esPc = !esMovil && !esTablet;
 
+    // Limpiar clases previas para evitar acumulación al redimensionar
+    document.body.classList.remove('dispositivo-movil', 'dispositivo-tablet', 'dispositivo-pc');
+
     if (esMovil) {
         document.body.classList.add('dispositivo-movil');
+        console.log("Dispositivo detectado: Smartphone / Móvil (Modo PWA Táctil)");
     } else if (esTablet) {
         document.body.classList.add('dispositivo-tablet');
+        console.log("Dispositivo detectado: Tablet (Modo PWA Adaptativo)");
     } else {
         document.body.classList.add('dispositivo-pc');
+        console.log("Dispositivo detectado: Laptop o Escritorio (Modo Simulación PWA)");
     }
 }
 
