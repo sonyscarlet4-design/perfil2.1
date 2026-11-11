@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Fotos | Luciana Castillo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="rpg-app-body sub-page">
+
+    <!-- Botón para volver al menú principal -->
+    <header class="rpg-top-hud" style="justify-content: space-between; padding: 15px 20px;">
+        <a href="index.html" class="rpg-icon-btn" title="Volver al Menú" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">🏠</a>
+        <span class="rpg-name">📷 Galería & Mascotas</span>
+        <div style="width: 40px;"></div>
+    </header>
+
+    <main class="rpg-main-screen" style="display: flex; justify-content: center; align-items: center; padding: 20px;">
+        <div class="rpg-modal-content frame-box" style="width: 100%; max-width: 600px; margin: auto;">
+            
+            <div class="carrusel" style="position: relative; height: 400px; overflow: hidden;">
+                <!-- Diapositiva 1 -->
+                <div class="slide active">
+                    <img src="WhatsApp Image 2026-11-03 at 9.18.01 PM.jpeg" alt="Luciana" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="slide-caption">Luciana Castillo - Ing. Sistemas</div>
+                </div>
+                
+                <!-- Diapositiva 2 -->
+                <div class="slide">
+                    <img src="dominic Image 2026-11-03 at 9.18.02 PM.jpeg" alt="Dominic" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="slide-caption">Dominic 🐾</div>
+                </div>
+                
+                <!-- Diapositiva 3 -->
+                <div class="slide">
+                    <img src="hermanos2026-11-11 at 1.16.32 AM.jpeg" alt="Hermanos" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="slide-caption">Momentos en familia</div>
+                </div>
+                
+                <!-- Diapositiva 4 -->
+                <div class="slide">
+                    <img src="susu 2026-11-11 at 1.14.44 AM.jpeg" alt="Susu" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="slide-caption">Susu 🐱</div>
+                </div>
+
+                <!-- Botones de navegación del carrusel -->
+                <button class="carrusel-btn prev" id="prevBtn" type="button">❮</button>
+                <button class="carrusel-btn next" id="nextBtn" type="button">❯</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Vinculación del script para que funcionen las flechas -->
+    <script src="script.js" defer></script>
+</body>
+</html>
