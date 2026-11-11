@@ -189,3 +189,23 @@ if ('serviceWorker' in navigator) {
     });
 }
 }
+// --- SCRIPT DE DETECCIÓN DE DISPOSITIVOS ---
+function detectarDispositivo() {
+    const ancho = window.innerWidth;
+    const userAgent = navigator.userAgent.toLowerCase();
+
+    const esMovil = /android|iphone|ipad|ipod|blackberry|opera mini|mobile/i.test(userAgent) || ancho <= 768;
+    const esTablet = (/ipad|tablet/i.test(userAgent) || (ancho > 768 && ancho <= 1024));
+    const esPc = !esMovil && !esTablet;
+
+    if (esMovil) {
+        document.body.classList.add('dispositivo-movil');
+    } else if (esTablet) {
+        document.body.classList.add('dispositivo-tablet');
+    } else {
+        document.body.classList.add('dispositivo-pc');
+    }
+}
+
+window.addEventListener('load', detectarDispositivo);
+window.addEventListener('resize', detectarDispositivo);

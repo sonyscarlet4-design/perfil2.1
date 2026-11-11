@@ -895,3 +895,59 @@ body.rpg-app-body {
         padding: 10px 20px;
     }
 }
+/* --- 1. AJUSTE UNIVERSAL PARA QUE NADA SE DESBORDE --- */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+body, .rpg-modal-content, .game-card {
+    box-sizing: border-box;
+}
+
+/* --- 2. TABLETS (Pantallas menores a 1024px) --- */
+@media screen and (max-width: 1024px) {
+    .rpg-social-widget {
+        right: 15px;
+        width: 260px;
+    }
+}
+
+/* --- 3. CELULARES (Pantallas menores a 768px) --- */
+@media screen and (max-width: 768px) {
+    /* Ventanas modales y contenedores al 95% de la pantalla */
+    .rpg-modal-content {
+        width: 95% !important;
+        padding: 15px !important;
+        margin: 10px auto;
+    }
+
+    /* Tarjetas de juegos en columna para móviles */
+    .game-card {
+        flex-direction: column !important;
+        align-items: center;
+        text-align: center;
+    }
+
+    .game-card img {
+        width: 100%;
+        max-height: 140px;
+        object-fit: cover;
+    }
+
+    /* Widget de redes sociales flotante adaptable */
+    .rpg-social-widget {
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 92% !important;
+        margin: 15px auto;
+    }
+
+    /* Botones más cómodos para el dedo táctil */
+    .game-link-btn, .bottom-nav-item {
+        padding: 10px 14px;
+    }
+}
