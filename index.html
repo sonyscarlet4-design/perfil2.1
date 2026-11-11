@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Luciana Castillo | HUD RPG Perfil</title>
     <!-- Google Fonts -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Enlace PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#23141f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <!-- Vinculación del CSS -->
     <link rel="stylesheet" href="styles.css">
-    <meta name="theme-color" content="#23141f">
 </head>
 <body class="rpg-app-body">
 
@@ -20,7 +26,6 @@
         <div class="rpg-player-info">
             <div class="rpg-avatar-frame" id="avatarBtn">
                 <img src="WhatsApp Image 2026-11-03 at 9.18.01 PM.jpeg" alt="Luciana Castillo" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60'">
-           
             </div>
             <div class="rpg-player-text">
                 <span class="rpg-name">Luciana Castillo</span>
@@ -31,47 +36,6 @@
             </div>
         </div>
         
-        <!-- VENTANA MODAL DE VIDEOJUEGOS -->
-<div id="juegos-win" class="rpg-modal">
-    <div class="rpg-modal-content frame-box">
-        <div class="rpg-modal-header">
-            <h2>🎮 Arsenal de Videojuegos</h2>
-            <button class="close-win-btn">✖</button>
-        </div>
-        
-        <div class="games-container">
-    <!-- Juego 1: Left 4 Dead -->
-    <div class="game-card frame-box">
-        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/500/header.jpg" alt="Left 4 Dead">
-        <div class="game-info">
-            <h3>Left 4 Dead</h3>
-            <p>Supervivencia zombi cooperativa en equipo.</p>
-            <a href="https://store.steampowered.com/app/500/Left_4_Dead/" target="_blank" class="game-link-btn">Jugar / Ver en Steam ↗</a>
-        </div>
-    </div>
-<!-- Juego 2: League of Legends -->
-            <div class="game-card frame-box">
-                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=60" alt="League of Legends">
-                <div class="game-info">
-                    <h3>League of Legends</h3>
-                    <p>Estrategia táctica multijugador online (MOBA).</p>
-                    <a href="https://www.leagueoflegends.com" target="_blank" class="game-link-btn">Sitio Oficial ↗</a>
-                </div>
-            </div>
-
-    <!-- Juego 3: Tekken -->
-    <div class="game-card frame-box">
-        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1778820/header.jpg" alt="Tekken">
-        <div class="game-info">
-            <h3>Tekken</h3>
-            <p>Combate cuerpo a cuerpo y artes marciales.</p>
-            <a href="https://tk7.tekken.com" target="_blank" class="game-link-btn">Ver Juego ↗</a>
-        </div>
-    </div>
-</div>
-    </div>
-</div>
-
         <div class="rpg-top-tags">
             <span class="hud-tag">⭐ teamZone</span>
             <span class="hud-tag">💻 Sistemas</span>
@@ -79,14 +43,13 @@
         </div>
 
         <div class="rpg-top-actions">
-            <!-- BOTÓN DE HIDRATACIÓN / REFRESH DE PÁGINA -->
             <button id="hydrateBtn" class="rpg-icon-btn" title="Re-hidratar / Refrescar App">💧</button>
             <button id="pwaInstallBtn" class="rpg-icon-btn" title="Instalar App PWA">📥</button>
             <button id="themeBtn" class="rpg-icon-btn" title="Cambiar Tema">🌙</button>
         </div>
     </header>
 
-    <!-- PANTALLA PRINCIPAL (FULLSCREEN SIN SCROLL) -->
+    <!-- PANTALLA PRINCIPAL (ADAPTADA A MÓVIL Y ESCRITORIO) -->
     <main class="rpg-main-screen">
         
         <!-- Botones de Acceso Rápido Laterales / Izquierda -->
@@ -95,11 +58,11 @@
                 <span class="node-icon">📷</span>
                 <span class="node-label">Fotos</span>
             </a>
-            <button class="rpg-node-btn" data-modal="perfil-win">
+            <button class="rpg-node-btn" data-modal="perfil-win" type="button">
                 <span class="node-icon">📜</span>
                 <span class="node-label">Intereses</span>
             </button>
-            <button class="rpg-node-btn" data-modal="horario-win">
+            <button class="rpg-node-btn" data-modal="horario-win" type="button">
                 <span class="node-icon">📅</span>
                 <span class="node-label">Horario</span>
             </button>
@@ -108,7 +71,7 @@
         <!-- Centro: Slogan o Mensaje Principal -->
         <div class="rpg-center-showcase">
             <div class="showcase-box">
-                <h1 class="rpg-main-title">Pasión por la Tecnología </h1>
+                <h1 class="rpg-main-title">Pasión por la Tecnología</h1>
                 <p class="rpg-main-subtitle">Estudiante de Ingeniería en Sistemas | Amante del Arte y los Animales</p>
             </div>
         </div>
@@ -117,65 +80,57 @@
         <div class="rpg-right-widgets">
             <div class="widget-card" data-modal="favoritos-win">
                 <div class="widget-icon music-badge">🎧</div>
-                
-                    <span class="widget-title">Música & Rock</span>
-                    <span class="widget-desc">Bad Omens, Zoé, K-Pop</span>
-                </div>
+                <span class="widget-title">Música & Rock</span>
+                <span class="widget-desc">Bad Omens, Zoé, K-Pop</span>
+            </div>
                
-            <!-- Widget Flotante Lateral de Redes Social y Accesos -->
-<!-- WIDGET FLOTANTE LATERAL DERECHO -->
-<div class="rpg-social-widget frame-box">
-    <button class="widget-toggle-btn" id="toggleWidgetBtn" title="Desplegar/Ocultar">❮</button>
-    <div class="social-widget-content">
+            <!-- WIDGET FLOTANTE LATERAL DERECHO -->
+            <div class="rpg-social-widget frame-box">
+                <button class="widget-toggle-btn" id="toggleWidgetBtn" title="Desplegar/Ocultar" type="button">❮</button>
+                <div class="social-widget-content">
+                    <a href="https://www.instagram.com/sony__scarlett" target="_blank" class="social-item instagram-item">
+                        <div class="social-icon-box instagram-bg">
+                            <i class="fa-brands fa-instagram social-icon"></i>
+                        </div>
+                        <div class="social-info">
+                            <span class="social-name">Instagram</span>
+                            <span class="social-detail">@sony__scarlett</span>
+                            <span class="social-status online">● En línea</span>
+                        </div>
+                        <button class="social-action-btn add-btn" type="button">+</button>
+                    </a>
 
-        <!-- Ítem 1: Instagram -->
-        <a href="https://www.instagram.com/sony__scarlett" target="_blank" class="social-item instagram-item">
-            <div class="social-icon-box instagram-bg">
-                <i class="fa-brands fa-instagram social-icon"></i>
-            </div>
-            <div class="social-info">
-                <span class="social-name">Instagram</span>
-                <span class="social-detail"> @sony__scarlett</span>
-                <span class="social-status online">● En línea</span>
-            </div>
-            <button class="social-action-btn add-btn">+</button>
-        </a>
+                    <a href="https://github.com/sonyscarlet4-design" target="_blank" class="social-item github-item">
+                        <div class="social-icon-box github-bg">
+                            <i class="fa-brands fa-github social-icon"></i>
+                        </div>
+                        <div class="social-info">
+                            <span class="social-name">GitHub</span>
+                            <span class="social-detail">@sonyscarlet4-design</span>
+                            <span class="social-subdetail">🌱 6 Repositorios</span>
+                        </div>
+                        <button class="social-action-btn external-btn" type="button">↗</button>
+                    </a>
 
-        <!-- Ítem 2: GitHub -->
-        <a href="https://github.com/sonyscarlet4-design" target="_blank" class="social-item github-item">
-            <div class="social-icon-box github-bg">
-                <i class="fa-brands fa-github social-icon"></i>
-            </div>
-            <div class="social-info">
-                <span class="social-name">GitHub</span>
-                <span class="social-detail">@sonyscarlet4-design</span>
-                <span class="social-subdetail">🌱 6 Repositorios</span>
-            </div>
-            <button class="social-action-btn external-btn">↗</button>
-        </a>
+                    <a href="https://wa.me/59175273771" target="_blank" class="social-item whatsapp-item">
+                        <div class="social-icon-box whatsapp-bg">
+                            <i class="fa-brands fa-whatsapp social-icon"></i>
+                        </div>
+                        <div class="social-info">
+                            <span class="social-name">WhatsApp</span>
+                            <span class="social-detail">Misiva Directa</span>
+                            <span class="social-status online">● Disponible</span>
+                        </div>
+                        <button class="social-action-btn add-btn" type="button">+</button>
+                    </a>
 
-        <!-- Ítem 3: WhatsApp -->
-        <a href="https://wa.me/59175273771" target="_blank" class="social-item whatsapp-item">
-            <div class="social-icon-box whatsapp-bg">
-                <i class="fa-brands fa-whatsapp social-icon"></i>
+                    <div class="social-widget-footer">
+                        <button class="footer-icon-btn" data-modal="favoritos-win" title="Música" type="button">🎵</button>
+                        <button class="footer-icon-btn" data-modal="horario-win" title="Horario" type="button">📅</button>
+                    </div>
+                </div>
             </div>
-            <div class="social-info">
-                <span class="social-name">WhatsApp</span>
-                <span class="social-detail"> Misiva Directa</span>
-                <span class="social-status online">● Disponible</span>
-            </div>
-            <button class="social-action-btn add-btn">+</button>
-        </a>
 
-        <!-- Pie inferior de iconos del widget -->
-        <div class="social-widget-footer">
-          
-            <button class="footer-icon-btn" data-modal="favoritos-win" title="Música">🎵</button>
-            <button class="footer-icon-btn" data-modal="horario-win" title="Horario">📅</button>
-        </div>
-
-    </div>
-</div>
             <div class="widget-card" data-modal="horario-win">
                 <div class="widget-icon sheets-badge">📅</div>
                 <div class="widget-info">
@@ -186,9 +141,8 @@
             </div>
 
             <div class="widget-mini-bar">
-                <button class="mini-tool-btn" data-modal="inicio-win">📷</button>
-                <button class="mini-tool-btn" data-modal="favoritos-win">🎵</button>
-               
+                <a href="fotos.html" class="mini-tool-btn" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">📷</a>
+                <button class="mini-tool-btn" data-modal="favoritos-win" type="button">🎵</button>
             </div>
         </div>
 
@@ -196,54 +150,60 @@
 
     <!-- BARRA DE NAVEGACIÓN INFERIOR -->
     <nav class="rpg-bottom-nav">
-        
-        <button class="bottom-nav-item active" data-modal="perfil-win">
+        <button class="bottom-nav-item active" data-modal="perfil-win" type="button">
             <span class="nav-icon">👤</span>
             <span class="nav-text">Perfil</span>
         </button>
-        <button class="bottom-nav-item" data-modal="horario-win">
+        <button class="bottom-nav-item" data-modal="horario-win" type="button">
             <span class="nav-icon">📅</span>
             <span class="nav-text">Horario</span>
         </button>
-        <button class="bottom-nav-item" data-modal="favoritos-win">
+        <button class="bottom-nav-item" data-modal="favoritos-win" type="button">
             <span class="nav-icon">🎧</span>
             <span class="nav-text">Música</span>
         </button>
-        <button class="bottom-nav-item" data-modal="juegos-win">
-    <span class="nav-icon">🎮</span>
-    <span class="nav-text">Juegos</span>
-</button>
-
-        <button class="bottom-nav-center-btn" data-modal="inicio-win" title="Menú Principal">
-            <span class="nav-center-icon">💎</span>
-            <span class="nav-text">Menú</span>
+        <button class="bottom-nav-item" data-modal="juegos-win" type="button">
+            <span class="nav-icon">🎮</span>
+            <span class="nav-text">Juegos</span>
         </button>
         
-        <button class="rpg-massive-cta" data-modal="contacto-win">
+        <button class="rpg-massive-cta" data-modal="contacto-win" type="button">
             <span>🚀</span> CONTACTO
         </button>
-        
     </nav>
 
     <!-- VENTANAS MODALES -->
-    <div id="inicio-win" class="rpg-modal">
+    <div id="juegos-win" class="rpg-modal">
         <div class="rpg-modal-content frame-box">
             <div class="rpg-modal-header">
-                <h2>📷 Galería & Mascotas</h2>
-                <button class="close-win-btn">✖</button>
+                <h2>🎮 Arsenal de Videojuegos</h2>
+                <button class="close-win-btn" type="button">✖</button>
             </div>
-            <div class="carrusel">
-                <div class="slide active">
-                    <img src="WhatsApp Image 2026-11-03 at 9.18.01 PM.jpeg" alt="Luciana" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60'">
-                    <div class="slide-caption">Luciana Castillo - Ing. Sistemas</div>
+            <div class="games-container">
+                <div class="game-card frame-box">
+                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/500/header.jpg" alt="Left 4 Dead">
+                    <div class="game-info">
+                        <h3>Left 4 Dead</h3>
+                        <p>Supervivencia zombi cooperativa en equipo.</p>
+                        <a href="https://store.steampowered.com/app/500/Left_4_Dead/" target="_blank" class="game-link-btn">Jugar / Ver en Steam ↗</a>
+                    </div>
                 </div>
-                <div class="slide">
-                    <img src="dominic Image 2026-11-03 at 9.18.02 PM.jpeg" alt="Mascota" onerror="this.src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=500&auto=format&fit=crop&q=60'">
-                    <div class="slide-caption">Dominic </div>
+                <div class="game-card frame-box">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&auto=format&fit=crop&q=60" alt="League of Legends">
+                    <div class="game-info">
+                        <h3>League of Legends</h3>
+                        <p>Estrategia táctica multijugador online (MOBA).</p>
+                        <a href="https://www.leagueoflegends.com" target="_blank" class="game-link-btn">Sitio Oficial ↗</a>
+                    </div>
                 </div>
-                <button class="carrusel-btn prev" id="prevBtn">❮</button>
-                
-                <button class="carrusel-btn next" id="nextBtn">❯</button>
+                <div class="game-card frame-box">
+                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1778820/header.jpg" alt="Tekken">
+                    <div class="game-info">
+                        <h3>Tekken</h3>
+                        <p>Combate cuerpo a cuerpo y artes marciales.</p>
+                        <a href="https://tk7.tekken.com" target="_blank" class="game-link-btn">Ver Juego ↗</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -252,7 +212,7 @@
         <div class="rpg-modal-content frame-box">
             <div class="rpg-modal-header">
                 <h2>📜 Sobre Mí & Pasatiempos</h2>
-                <button class="close-win-btn">✖</button>
+                <button class="close-win-btn" type="button">✖</button>
             </div>
             <div class="grid-2">
                 <div class="card frame-box">
@@ -280,7 +240,7 @@
         <div class="rpg-modal-content frame-box">
             <div class="rpg-modal-header">
                 <h2>📅 Horario & Rutina</h2>
-                <button class="close-win-btn">✖</button>
+                <button class="close-win-btn" type="button">✖</button>
             </div>
             <div class="table-responsive">
                 <table class="sheets-table">
@@ -300,25 +260,23 @@
     <div id="favoritos-win" class="rpg-modal">
         <div class="rpg-modal-content frame-box">
             <div class="rpg-modal-header">
-                <h2>🎧 Música </h2>
-                <button class="close-win-btn">✖</button>
+                <h2>🎧 Música</h2>
+                <button class="close-win-btn" type="button">✖</button>
             </div>
             <div class="accordion-container">
                 <div class="accordion-item frame-box">
-                    <button class="accordion-header"><span>🎸 Rock & Indie (Bad Omens, Zoé)</span><span class="icon">▼</span></button>
+                    <button class="accordion-header" type="button"><span>🎸 Rock & Indie (Bad Omens, Zoé)</span><span class="icon">▼</span></button>
                     <div class="accordion-content">
                         <div class="sub-item"><h4>Bad Omens</h4><p><em>Just Pretend</em></p></div>
                         <div class="sub-item"><h4>Zoé & Siddhartha</h4><p><em>Azul / Tarde</em></p></div>
                     </div>
                 </div>
                 <div class="accordion-item frame-box">
-                    <button class="accordion-header"><span>⭐ K-Pop & Romántica</span><span class="icon">▼</span></button>
+                    <button class="accordion-header" type="button"><span>⭐ K-Pop & Romántica</span><span class="icon">▼</span></button>
                     <div class="accordion-content">
                         <div class="sub-item"><h4>BTS & GOT7</h4><p><em>Love is Not Over / If You Do</em></p></div>
-                        <div class="sub-item"><h4>jose jose </h4><p><em>Baladas inolvidables</em></p></div>
+                        <div class="sub-item"><h4>José José</h4><p><em>Baladas inolvidables</em></p></div>
                     </div>
-                </div>
-                
                 </div>
             </div>
         </div>
@@ -328,7 +286,7 @@
         <div class="rpg-modal-content frame-box">
             <div class="rpg-modal-header">
                 <h2>Enviar propuesta laboral</h2>
-                <button class="close-win-btn">✖</button>
+                <button class="close-win-btn" type="button">✖</button>
             </div>
             <form id="hireForm">
                 <div class="form-group"><label>Nombre:</label><input type="text" id="nombre" placeholder="Tu nombre" required></div>
