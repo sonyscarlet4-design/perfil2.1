@@ -2,56 +2,116 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería de Fotos | Luciana Castillo</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Galería & Mascotas | Luciana Castillo</title>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Enlace a los estilos unificados con control de versión -->
+    <link rel="stylesheet" href="styles.css?v=3">
+    <style>
+        /* Ajustes específicos responsivos para el visor de fotos */
+        .photo-viewer-container {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            margin: 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .photo-frame-box {
+            width: 300px;
+            height: 300px;
+            border-radius: var(--border-radius, 12px);
+            background: rgba(30, 17, 26, 0.95);
+            border: 2px solid var(--accent-border, #8b536e);
+            box-shadow: var(--shadow-soft, 0 8px 24px rgba(0,0,0,0.5));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        @media screen and (max-width: 480px) {
+            .photo-frame-box {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
 </head>
-<body class="rpg-app-body sub-page">
+<body class="rpg-app-body">
 
-    <!-- Botón para volver al menú principal -->
-    <header class="rpg-top-hud" style="justify-content: space-between; padding: 15px 20px;">
-        <a href="index.html" class="rpg-icon-btn" title="Volver al Menú" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">🏠</a>
-        <span class="rpg-name">📷 Galería & Mascotas</span>
-        <div style="width: 40px;"></div>
+    <!-- HUD SUPERIOR -->
+    <header class="rpg-top-hud">
+        <div class="rpg-player-info" onclick="window.location.href='index.html'" style="cursor: pointer;">
+            <div class="rpg-avatar-frame">
+                <img src="WhatsApp Image 2026-11-03 at 9.18.01 PM.jpeg" alt="Luciana Castillo">
+            </div>
+            <div class="rpg-player-text">
+                <span class="rpg-name">Luciana Castillo</span>
+                <div class="rpg-level-bar">
+                    <span class="rpg-badge">Fotografía & Vistas</span>
+                </div>
+            </div>
+        </div>
+        <div class="rpg-top-actions">
+            <button class="rpg-icon-btn" onclick="window.location.href='index.html'" title="Volver al Inicio">🏠 regresar</button>
+        </div>
     </header>
 
-    <main class="rpg-main-screen" style="display: flex; justify-content: center; align-items: center; padding: 20px;">
-        <div class="rpg-modal-content frame-box" style="width: 100%; max-width: 600px; margin: auto;">
-            
-            <div class="carrusel" style="position: relative; height: 400px; overflow: hidden;">
-                <!-- Diapositiva 1 -->
-                <div class="slide active">
-                    <img src="WhatsApp Image 2026-11-03 at 9.18.01 PM.jpeg" alt="Luciana" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div class="slide-caption">Luciana Castillo - Ing. Sistemas</div>
-                </div>
-                
-                <!-- Diapositiva 2 -->
-                <div class="slide">
-                    <img src="dominic Image 2026-11-03 at 9.18.02 PM.jpeg" alt="Dominic" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div class="slide-caption">Dominic 🐾</div>
-                </div>
-                
-                <!-- Diapositiva 3 -->
-                <div class="slide">
-                    <img src="hermanos2026-11-11 at 1.16.32 AM.jpeg" alt="Hermanos" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div class="slide-caption">Momentos en familia</div>
-                </div>
-                
-                <!-- Diapositiva 4 -->
-                <div class="slide">
-                    <img src="susu 2026-11-11 at 1.14.44 AM.jpeg" alt="Susu" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div class="slide-caption">Susu 🐱</div>
-                </div>
+    <!-- PANTALLA PRINCIPAL DE FOTOS -->
+    <main class="rpg-main-screen" style="flex-direction: column; justify-content: center; align-items: center; overflow-y: auto; padding: 15px; box-sizing: border-box;">
+        
+        <div class="showcase-box" style="width: 100%; max-width: 800px; margin-bottom: 10px; text-align: center;">
+            <h1 class="rpg-main-title" style="font-size: 1.4rem;"><i class="fas fa-camera"></i> Galería & Memorias</h1>
+            <p class="rpg-main-subtitle" style="font-size: 0.8rem;">Registro visual de momentos, urbanismo y mascotas</p>
+        </div>
 
-                <!-- Botones de navegación del carrusel -->
-                <button class="carrusel-btn prev" id="prevBtn" type="button">❮</button>
-                <button class="carrusel-btn next" id="nextBtn" type="button">❯</button>
+        <!-- Visor de Una Sola Foto con Botones de Siguiente / Anterior -->
+        <div class="photo-viewer-container">
+            
+            <!-- Botón Izquierda -->
+            <button class="carousel-btn prev-btn" onclick="changePhoto(-1)" style="cursor: pointer; z-index: 5;">&#10094;</button>
+            
+            <!-- Marco Cuadrado con una sola imagen activa -->
+            <div class="photo-frame-box">
+                <img id="mainPhoto" src="dominic Image 2026-11-03 at 9.18.02 PM.jpeg" alt="Galería de Memorias" style="width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--border-radius) - 2px); display: block;">
             </div>
 
+            <!-- Botón Derecha -->
+            <button class="carousel-btn next-btn" onclick="changePhoto(1)" style="cursor: pointer; z-index: 5;">&#10095;</button>
         </div>
+
     </main>
 
-    <!-- Vinculación del script para que funcionen las flechas -->
+    <!-- Script de control de fotos individuales -->
+    <script>
+        const photos = [
+            "dominic Image 2026-11-03 at 9.18.02 PM.jpeg",
+            "WhatsApp Image 2026-11-03 at 9.18.01 PM.jpeg",
+            "hermanos2026-11-11 at 1.16.32 AM.jpeg",
+            "susu 2026-11-11 at 1.14.44 AM.jpeg"
+        ];
+        
+        let currentIndex = 0;
+
+        function changePhoto(direction) {
+            currentIndex += direction;
+            
+            if (currentIndex < 0) {
+                currentIndex = photos.length - 1;
+            } else if (currentIndex >= photos.length) {
+                currentIndex = 0;
+            }
+            
+            document.getElementById('mainPhoto').src = photos[currentIndex];
+        }
+    </script>
     <script src="script.js" defer></script>
 </body>
 </html>

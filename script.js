@@ -1,5 +1,3 @@
-
-
 (function () {
     'use strict';
 
@@ -11,7 +9,7 @@
     // 1. REFRESH Y BOTÓN DE HIDRATACIÓN
     function hydrateApp() {
         if (window.location) {
-            window.location.reload(true);
+            window.location.reload();
         }
     }
 
@@ -35,23 +33,7 @@
         }
     }
 
-    // 3. CARRUSEL CON LIMPIEZA DE EVENTOS
-    function initCarrusel() {
-        slides = Array.from(document.querySelectorAll('.slide'));
-    }
-
-    function changeSlide(direction) {
-        if (!slides.length) return;
-        slides[currentSlide].classList.remove('active');
-        if (direction === 'next') {
-            currentSlide = (currentSlide + 1) % slides.length;
-        } else if (direction === 'prev') {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        }
-        slides[currentSlide].classList.add('active');
-    }
-
-    // 4. ACORDEÓN DESPLEGABLE
+    // 3. ACORDEÓN DESPLEGABLE
     function toggleAccordion(headerBtn) {
         const item = headerBtn.closest('.accordion-item');
         if (!item) return;
@@ -79,7 +61,7 @@
         }
     }
 
-    // 5. DELEGACIÓN DE EVENTOS GLOBAL
+    // 4. DELEGACIÓN DE EVENTOS GLOBAL
     document.addEventListener('click', function (e) {
         if (e.target.closest('#hydrateBtn')) {
             hydrateApp();
@@ -110,15 +92,6 @@
             return;
         }
 
-        if (e.target.closest('#nextBtn')) {
-            changeSlide('next');
-            return;
-        }
-        if (e.target.closest('#prevBtn')) {
-            changeSlide('prev');
-            return;
-        }
-
         const accordionHeader = e.target.closest('.accordion-header');
         if (accordionHeader) {
             toggleAccordion(accordionHeader);
@@ -126,7 +99,7 @@
         }
     });
 
-    // 6. MANEJO DE FORMULARIOS CON VALIDACIÓN LIMPIA
+    // 5. MANEJO DE FORMULARIOS CON VALIDACIÓN LIMPIA
     document.addEventListener('submit', function (e) {
         if (e.target && e.target.id === 'hireForm') {
             e.preventDefault();
@@ -147,28 +120,23 @@
         }
     });
 
-    // 7. INICIALIZACIÓN Y INMUNIZACIÓN PWA AL CARGAR LA PÁGINA
+    // 6. INICIALIZACIÓN AL CARGAR LA PÁGINA (Permitiendo scroll natural táctil)
     window.addEventListener('DOMContentLoaded', function () {
-        initCarrusel();
-
-        document.body.addEventListener('touchmove', function (e) {
-            if (!e.target.closest('.rpg-modal-content')) {
-                e.preventDefault();
-            }
-        }, { passive: false });
+        // No bloqueamos touchmove global para permitir scroll fluido en celular
     });
 
 })();
 
-// --- WIDGET LATERAL ---
-const toggleWidgetBtn = document.getElementById('toggleWidgetBtn');
-const socialWidget = document.querySelector('.rpg-social-widget');
-
-if (toggleWidgetBtn && socialWidget) {
-    toggleWidgetBtn.addEventListener('click', () => {
-        socialWidget.classList.toggle('collapsed');
-        toggleWidgetBtn.textContent = socialWidget.classList.contains('collapsed') ? '❯' : '❮';
-    });
+// --- WIDGET SOCIAL LATERAL IZQUIERDO ---
+function toggleSocialWidget() {
+    const widget = document.getElementById('socialWidget');
+    if (widget) {
+        widget.classList.toggle('collapsed');
+        const btn = widget.querySelector('.widget-toggle-btn');
+        if (btn) {
+            btn.innerHTML = widget.classList.contains('collapsed') ? '▶' : '◀';
+        }
+    }
 }
 
 // --- REGISTRO DE SERVICE WORKER ---
@@ -187,32 +155,17 @@ function detectarDispositivo() {
 
     const esMovil = /android|iphone|ipad|ipod|blackberry|opera mini|mobile/i.test(userAgent) || ancho <= 768;
     const esTablet = (/ipad|tablet/i.test(userAgent) || (ancho > 768 && ancho <= 1024));
-    const esPc = !esMovil && !esTablet;
-
-    // Limpiar clases previas para evitar acumulación al redimensionar
+    
     document.body.classList.remove('dispositivo-movil', 'dispositivo-tablet', 'dispositivo-pc');
 
     if (esMovil) {
         document.body.classList.add('dispositivo-movil');
-        console.log("Dispositivo detectado: Smartphone / Móvil (Modo PWA Táctil)");
     } else if (esTablet) {
         document.body.classList.add('dispositivo-tablet');
-        console.log("Dispositivo detectado: Tablet (Modo PWA Adaptativo)");
     } else {
         document.body.classList.add('dispositivo-pc');
-        console.log("Dispositivo detectado: Laptop o Escritorio (Modo Simulación PWA)");
     }
 }
 
 window.addEventListener('load', detectarDispositivo);
 window.addEventListener('resize', detectarDispositivo);
-// Asegurar que al presionar el botón de Perfil (casita) se restablezca la pantalla principal limpia
-const profileBtn = document.querySelector('.bottom-nav-item[data-target="perfil"]') || document.querySelector('.fa-user')?.closest('button');
-if (profileBtn) {
-    profileBtn.addEventListener('click', () => {
-        // Cierra cualquier modal activa
-        document.querySelectorAll('.rpg-modal').forEach(modal => modal.classList.remove('active'));
-        
-        
-    });
-}

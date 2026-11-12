@@ -9,17 +9,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="styles.css?v=3">
 
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js', { scope: './' })
-                .then(reg => console.log('SW Registrado:', reg.scope))
-                .catch(err => console.error('Error SW:', err));
-        });
-    }
-</script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js', { scope: './' })
+                    .then(reg => console.log('SW Registrado:', reg.scope))
+                    .catch(err => console.error('Error SW:', err));
+            });
+        }
+    </script>
 </head>
 <body class="rpg-app-body">
 
@@ -54,8 +54,46 @@
     <!-- PANTALLA PRINCIPAL (ADAPTADA A MÓVIL Y ESCRITORIO) -->
     <main class="rpg-main-screen">
         
-        <!-- Botones de Acceso Rápido Laterales / Izquierda -->
-        <div class="rpg-floating-nodes">
+        <!-- Izquierda: Widget Social Detallado + Nodos de Acceso Rápido -->
+        <div class="rpg-floating-nodes" style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+            
+            <!-- Widget Social Detallado (Ubicado arriba de los nodos a la izquierda) -->
+            <div class="rpg-social-widget" id="socialWidget">
+                <button class="widget-toggle-btn" onclick="toggleSocialWidget()">▶</button>
+                <div class="social-widget-content">
+                    <!-- Instagram -->
+                    <a href="https://instagram.com" target="_blank" class="social-item">
+                        <div class="social-icon-box instagram-bg"><i class="fab fa-instagram"></i></div>
+                        <div class="social-info">
+                            <span class="social-name">INSTAGRAM</span>
+                            <span class="social-detail">@sony__scarlett</span>
+                            <span class="social-status online">• En línea</span>
+                        </div>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/sonyscarlet4-design" target="_blank" class="social-item">
+                        <div class="social-icon-box github-bg"><i class="fab fa-github"></i></div>
+                        <div class="social-info">
+                            <span class="social-name">GITHUB</span>
+                            <span class="social-detail">@sonyscarlet4-design</span>
+                            <span class="social-subdetail">🌿 6 Repositorios</span>
+                        </div>
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/59175273771" target="_blank" class="social-item">
+                        <div class="social-icon-box whatsapp-bg"><i class="fab fa-whatsapp"></i></div>
+                        <div class="social-info">
+                            <span class="social-name">WHATSAPP</span>
+                            <span class="social-detail">Misiva Directa</span>
+                            <span class="social-status online">• Disponible</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Nodos de navegación -->
             <a href="fotos.html" class="rpg-node-btn" style="text-decoration: none;">
                 <span class="node-icon">📷</span>
                 <span class="node-label">Fotos</span>
@@ -78,70 +116,27 @@
             </div>
         </div>
 
-        <!-- Widgets Flotantes / Derecha -->
+        <!-- Derecha: Widgets Limpios y Directos -->
         <div class="rpg-right-widgets">
-            <div class="widget-card" data-modal="favoritos-win">
-                <div class="widget-icon music-badge">🎧</div>
-                <span class="widget-title">Música & Rock</span>
-                <span class="widget-desc">Bad Omens, Zoé, K-Pop</span>
-            </div>
-               
-            <!-- WIDGET FLOTANTE LATERAL DERECHO -->
-            <div class="rpg-social-widget frame-box">
-                <button class="widget-toggle-btn" id="toggleWidgetBtn" title="Desplegar/Ocultar" type="button">❮</button>
-                <div class="social-widget-content">
-                    <a href="https://www.instagram.com/sony__scarlett" target="_blank" class="social-item instagram-item">
-                        <div class="social-icon-box instagram-bg">
-                            <i class="fa-brands fa-instagram social-icon"></i>
-                        </div>
-                        <div class="social-info">
-                            <span class="social-name">Instagram</span>
-                            <span class="social-detail">@sony__scarlett</span>
-                            <span class="social-status online">● En línea</span>
-                        </div>
-                        <button class="social-action-btn add-btn" type="button">+</button>
-                    </a>
-
-                    <a href="https://github.com/sonyscarlet4-design" target="_blank" class="social-item github-item">
-                        <div class="social-icon-box github-bg">
-                            <i class="fa-brands fa-github social-icon"></i>
-                        </div>
-                        <div class="social-info">
-                            <span class="social-name">GitHub</span>
-                            <span class="social-detail">@sonyscarlet4-design</span>
-                            <span class="social-subdetail">🌱 6 Repositorios</span>
-                        </div>
-                        <button class="social-action-btn external-btn" type="button">↗</button>
-                    </a>
-
-                    <a href="https://wa.me/59175273771" target="_blank" class="social-item whatsapp-item">
-                        <div class="social-icon-box whatsapp-bg">
-                            <i class="fa-brands fa-whatsapp social-icon"></i>
-                        </div>
-                        <div class="social-info">
-                            <span class="social-name">WhatsApp</span>
-                            <span class="social-detail">Misiva Directa</span>
-                            <span class="social-status online">● Disponible</span>
-                        </div>
-                        <button class="social-action-btn add-btn" type="button">+</button>
-                    </a>
-
-                    <div class="social-widget-footer">
-                        <button class="footer-icon-btn" data-modal="favoritos-win" title="Música" type="button">🎵</button>
-                        <button class="footer-icon-btn" data-modal="horario-win" title="Horario" type="button">📅</button>
-                    </div>
+            <!-- Widget de Música -->
+            <div class="widget-card" onclick="openModal('musicModal')">
+                <div class="widget-icon">🎧</div>
+                <div class="widget-info">
+                    <span class="widget-title">Música & Rock</span>
+                    <span class="widget-desc">Bad Omens, Zoé, Redondos</span>
                 </div>
+                <span class="widget-arrow">▼</span>
             </div>
 
+            <!-- Widget de Rutina Semanal -->
             <div class="widget-card" data-modal="horario-win">
                 <div class="widget-icon sheets-badge">📅</div>
                 <div class="widget-info">
                     <span class="widget-title">Rutina Semanal</span>
                     <span class="widget-desc">Universidad & Desarrollo</span>
                 </div>
-                <span class="widget-arrow">↗</span>
-            </div>
-
+                <span class="widget-arrow">▼</span>
+                </div>
             <div class="widget-mini-bar">
                 <a href="fotos.html" class="mini-tool-btn" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">📷</a>
                 <button class="mini-tool-btn" data-modal="favoritos-win" type="button">🎵</button>
@@ -258,20 +253,18 @@
             </div>
         </div>
     </div>
-<div id="favoritos-win" class="rpg-modal">
+
+    <div id="favoritos-win" class="rpg-modal">
         <div class="rpg-modal-content frame-box">
             <div class="rpg-modal-header">
                 <h2>🎧 Música & Favoritos</h2>
                 <button class="close-win-btn" type="button">✖</button>
             </div>
             <div class="accordion-container">
-                
                 <!-- Categoría Rock & Indie -->
                 <div class="accordion-item frame-box">
                     <button class="accordion-header" type="button"><span>🎸 Rock & Indie</span><span class="icon">▼</span></button>
                     <div class="accordion-content">
-                        
-                        <!-- Bad Omens -->
                         <div class="music-card-item">
                             <img src="bad-omens.jpg" alt="Bad Omens" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=100&auto=format&fit=crop&q=60'">
                             <div class="music-info">
@@ -280,8 +273,6 @@
                                 <a href="https://www.youtube.com/watch?v=oxqYivY3VJM" target="_blank" class="song-link">Escuchar original ↗</a>
                             </div>
                         </div>
-
-                        <!-- Zoé -->
                         <div class="music-card-item">
                             <img src="zoe.jpg" alt="Zoé" onerror="this.src='https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=100&auto=format&fit=crop&q=60'">
                             <div class="music-info">
@@ -290,8 +281,6 @@
                                 <a href="https://www.youtube.com/watch?v=84v5Qv7-1k4" target="_blank" class="song-link">Escuchar original ↗</a>
                             </div>
                         </div>
-
-                        <!-- Siddhartha -->
                         <div class="music-card-item">
                             <img src="siddhartha.jpg" alt="Siddhartha" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=100&auto=format&fit=crop&q=60'">
                             <div class="music-info">
@@ -300,7 +289,6 @@
                                 <a href="https://www.youtube.com/watch?v=0b9L88h5pY8" target="_blank" class="song-link">Escuchar original ↗</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
@@ -308,8 +296,6 @@
                 <div class="accordion-item frame-box">
                     <button class="accordion-header" type="button"><span>⭐ K-Pop & Romántica</span><span class="icon">▼</span></button>
                     <div class="accordion-content">
-                        
-                        <!-- BTS -->
                         <div class="music-card-item">
                             <img src="bts.jpg" alt="BTS" onerror="this.src='https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=100&auto=format&fit=crop&q=60'">
                             <div class="music-info">
@@ -318,8 +304,6 @@
                                 <a href="https://www.youtube.com/watch?v=wXU-g9lWw_U" target="_blank" class="song-link">Escuchar original ↗</a>
                             </div>
                         </div>
-
-                        <!-- GOT7 -->
                         <div class="music-card-item">
                             <img src="got7.jpg" alt="GOT7" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=100&auto=format&fit=crop&q=60'">
                             <div class="music-info">
@@ -328,8 +312,6 @@
                                 <a href="https://www.youtube.com/watch?v=T0iPB_FeHpU" target="_blank" class="song-link">Escuchar original ↗</a>
                             </div>
                         </div>
-
-                        <!-- José José -->
                         <div class="music-card-item">
                             <img src="josejose.jpg" alt="José José" onerror="this.src='https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=100&auto=format&fit=crop&q=60'">
                             <div class="music-info">
@@ -338,13 +320,9 @@
                                 <a href="https://www.youtube.com/watch?v=7bBfW_27lCc" target="_blank" class="song-link">Escuchar original ↗</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
-        </div>
-    </div>
         </div>
     </div>
 
@@ -363,6 +341,20 @@
             <div id="alertaBox"></div>
         </div>
     </div>
+
+    <!-- Script de control para el widget social izquierdo -->
+    <script>
+        function toggleSocialWidget() {
+            const widget = document.getElementById('socialWidget');
+            widget.classList.toggle('collapsed');
+            const btn = widget.querySelector('.widget-toggle-btn');
+            if (widget.classList.contains('collapsed')) {
+                btn.innerHTML = '◀';
+            } else {
+                btn.innerHTML = '▶';
+            }
+        }
+    </script>
 
     <script src="script.js" defer></script>
 </body>
