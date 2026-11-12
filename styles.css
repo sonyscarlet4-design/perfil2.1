@@ -779,47 +779,102 @@ img {
 @media screen and (max-width: 768px) {
     html, body {
         overflow-x: hidden !important;
-        width: 100% !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        position: fixed !important;
     }
 
     .rpg-main-screen {
         position: relative !important;
         width: 100vw !important;
-        height: calc(100vh - 100px) !important;
-        padding: 5px !important;
+        height: calc(100vh - 90px) !important;
+        max-height: 100dvh !important;
+        padding: 4px !important;
+        box-sizing: border-box !important;
         overflow: hidden !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
     }
 
     .rpg-floating-nodes {
-        position: absolute !important;
-        left: 10px !important;
-        top: 10px !important;
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
         z-index: 20 !important;
+        flex-shrink: 0;
+        margin-top: 5px;
     }
+
+    .rpg-node-btn {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    .node-icon { font-size: 0.75rem !important; }
+    .node-label { font-size: 0.45rem !important; }
 
     .rpg-center-showcase {
         position: absolute !important;
-        bottom: 65px !important;
+        bottom: 60px !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
-        width: 92% !important;
-        max-width: 340px !important;
+        width: 88% !important;
+        max-width: 300px !important;
+        box-sizing: border-box !important;
         z-index: 10 !important;
+        text-align: center;
     }
 
+    .showcase-box {
+        padding: 5px 8px !important;
+    }
+
+    .rpg-main-title { font-size: 0.75rem !important; margin-bottom: 2px !important; }
+    .rpg-main-subtitle { font-size: 0.58rem !important; margin: 0 !important; }
+
     .rpg-right-widgets {
-        position: absolute !important;
-        right: 10px !important;
-        top: 10px !important;
-        transform: none !important;
-        width: auto !important;
-        max-width: 75vw !important;
-        z-index: 25 !important;
+        display: none !important;
     }
 
     .rpg-social-widget {
-        width: 230px !important;
+        position: relative !important;
+        right: auto !important;
+        top: 5px !important;
+        transform: none !important;
+        width: 55% !important;
+        max-width: 180px !important;
+        box-sizing: border-box !important;
+        z-index: 20 !important;
+        padding: 5px !important;
+        flex-shrink: 0;
     }
+
+    .widget-toggle-btn {
+        display: flex !important;
+        left: -16px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 16px !important;
+        height: 32px !important;
+        font-size: 0.6rem !important;
+    }
+
+    .social-item {
+        padding: 3px 5px !important;
+        gap: 5px !important;
+    }
+
+    .social-icon-box {
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 0.75rem !important;
+    }
+
+    .social-name { font-size: 0.6rem !important; }
+    .social-detail, .social-status, .social-subdetail { font-size: 0.45rem !important; }
 
     .rpg-bottom-nav {
         position: fixed !important;
@@ -831,8 +886,10 @@ img {
         display: flex !important;
         justify-content: space-around !important;
         align-items: center !important;
-        padding: 6px 4px !important;
+        padding: 5px 4px !important;
+        box-sizing: border-box !important;
     }
+
 }
 .music-card-item {
     display: flex;
