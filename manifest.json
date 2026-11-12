@@ -1,15 +1,21 @@
 {
-  "name": "Luciana Castillo | HUD RPG",
-  "short_name": "HUD RPG",
-  "start_url": "index.html",
-  "display": "standalone",
-  "background_color": "#23141f",
-  "theme_color": "#23141f",
+  "short_name": "LucianaRPG",
+  "name": "Luciana Castillo | Portafolio RPG",
   "icons": [
     {
       "src": "WhatsApp Image 2026-11-03 at 9.18.01 PM.jpeg",
-      "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "dominic Image 2026-11-03 at 9.18.02 PM.jpeg",
+      "type": "image/jpeg",
+      "sizes": "512x512"
     }
-  ]
+  ],
+  "start_url": "./index.html",
+  "background_color": "#1e111a",
+  "theme_color": "#f3c66f",
+  "display": "standalone",
+  "orientation": "portrait"
 }
