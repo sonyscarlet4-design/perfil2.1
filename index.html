@@ -18,6 +18,18 @@
 
     <!-- Vinculación del CSS -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest1.json ">
+    <meta name="theme-color" content="#f3c66f">
+    <script>
+        // Registro del Service Worker para soporte Offline-First
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker PWA Registrado con Éxito:', reg.scope))
+                    .catch(err => console.error('Fallo en Registro de SW:', err));
+            });
+        }
+    </script>
 </head>
 <body class="rpg-app-body">
 
