@@ -1,4 +1,4 @@
-const CACHE_NAME = 'portafolio-rpg-v1';
+const CACHE_NAME = 'portafolio-rpg-v2'; 
 
 // Lista exacta de tus archivos en perfil2.1
 const ASSETS_TO_CACHE = [
